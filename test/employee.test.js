@@ -44,14 +44,44 @@ describe("Employee", () => {
     });
     //TODO: describe getId()
     describe("getId", () => {
-    
+        it("should return the id of the employee", () => {
+            // arrange
+            const name = "John Doe";
+            const id = 5;
+            const email = "test@test.com";
+            const employee = new Employee(name, id, email);
+            // act
+            const employeeId = employee.getId();
+            // assert
+            expect(employeeId).toBe(id);
+        });
     });
     //TODO: describe getEmail()
     describe("getEmail", () => {
-
+        it("should return the email of the employee", () => {
+            // arrange
+            const name = "John Doe";
+            const id = 5;
+            const email = "test@test.com";
+            const employee = new Employee(name, id, email);
+            // act
+            const employeeEmail = employee.getEmail();
+            // assert
+            expect(employeeEmail).toBe(email);
+        });
     });
     //TODO: describe getRole()
     describe("getRole", () => {
-
+        it("should return the role of the employee", () => {
+            // arrange
+            const name = "John Doe";
+            const id = 5;
+            const email = "test@test.com";
+            const employee = new Employee(name, id, email);
+            // act
+            const employeeRole = employee.getRole();
+            // assert
+            expect(employeeRole).toBe("Employee");
+        });
     });
 });
