@@ -69,6 +69,30 @@ describe("Employee", () => {
             // assert
             expect(employeeEmail).toBe(email);
         });
+        it("should return an error is there is no email entered", () => {
+            // arrange
+            const name = "John Doe";
+            const id = 5;
+            const email = "";
+            const employee = new Employee(name, id, email);
+            const err = new Error("Please enter an email");
+            // act
+            const cb = () => employee.getEmail();
+            // assert
+            expect(cb).toThrowError(err);
+        });
+        it("should return an error is there is no email entered", () => {
+            // arrange
+            const name = "John Doe";
+            const id = 5;
+            const email = "test";
+            const employee = new Employee(name, id, email);
+            const err = new Error("Please enter a valid email address");
+            // act
+            const cb = () => employee.getEmail();
+            // assert
+            expect(cb).toThrowError(err);
+        });
     });
     //TODO: describe getRole()
     describe("getRole", () => {
