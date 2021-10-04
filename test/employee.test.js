@@ -29,10 +29,22 @@ describe("Employee", () => {
             // assert
             expect(employeeName).toBe(name);
         });
+        it("should return an error is there is no name entered", () => {
+            // arrange
+            const name = "";
+            const id = 5;
+            const email = "test@test.com";
+            const employee = new Employee(name, id, email);
+            const err = new Error("Please enter a name");
+            // act
+            const cb = () => employee.getName();
+            // assert
+            expect(cb).toThrowError(err);
+        });
     });
     //TODO: describe getId()
     describe("getId", () => {
-
+    
     });
     //TODO: describe getEmail()
     describe("getEmail", () => {
