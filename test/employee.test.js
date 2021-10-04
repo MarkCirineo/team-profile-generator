@@ -7,7 +7,7 @@ describe("Employee", () => {
             // arrange
             const name = "John Doe";
             const id = 5;
-            const email = "test@test.com"
+            const email = "test@test.com";
             // act 
             const employee = new Employee(name, id, email);
             // assert
@@ -18,7 +18,17 @@ describe("Employee", () => {
     });
     //TODO: describe getName()
     describe("getName", () => {
-
+        it("should return the name of the employee", () => {
+            // arrange
+            const name = "John Doe";
+            const id = 5;
+            const email = "test@test.com";
+            const employee = new Employee(name, id, email);
+            // act
+            const employeeName = employee.getName();
+            // assert
+            expect(employeeName).toBe(name);
+        });
     });
     //TODO: describe getId()
     describe("getId", () => {
