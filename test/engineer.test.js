@@ -117,4 +117,18 @@ describe("Engineer", () => {
             expect(engineerRole).toBe("Engineer");
         });
     });
+    describe("getGithub", () => {
+        it("should return the github of the engineer", () => {
+            // arrange
+            const name = "John Doe";
+            const id = 5;
+            const email = "test@test.com";
+            const github = "https://www.github.com/"
+            const engineer = new Engineer(name, id, email, github);
+            // act
+            const engineerGithub = engineer.getGithub();
+            // assert
+            expect(engineerGithub).toBe(github);
+        });
+    });
 });
