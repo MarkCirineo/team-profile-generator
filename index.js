@@ -94,6 +94,38 @@ const createEngineer = () => {
             })
 }
 
+const internQuestions = [
+    {
+        type: "input",
+        message: "Enter the employee's name:",
+        name: "name"
+    },
+    {
+        type: "input",
+        message: "Enter the employee's ID:",
+        name: "id"
+    },
+    {
+        type: "input",
+        message: "Enter the employee's email:",
+        name: "email"
+    },
+    {
+        type: "input",
+        message: "Enter the employee's school:",
+        name: "school"
+    },
+]
+
+const createIntern = () => {
+    inquirer
+        .prompt(internQuestions)
+            .then((data) => {
+                console.log(data)
+                decideNext();
+            })
+}
+
 const init = () => {
     decideNext();
 }
