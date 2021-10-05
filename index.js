@@ -62,9 +62,42 @@ const createManager = () => {
             })
 }
 
+const engineerQuestions = [
+    {
+        type: "input",
+        message: "Enter the employee's name:",
+        name: "name"
+    },
+    {
+        type: "input",
+        message: "Enter the employee's ID:",
+        name: "id"
+    },
+    {
+        type: "input",
+        message: "Enter the employee's email:",
+        name: "email"
+    },
+    {
+        type: "input",
+        message: "Enter the employee's github username:",
+        name: "github"
+    },
+]
+
+const createEngineer = () => {
+    inquirer
+        .prompt(engineerQuestions)
+            .then((data) => {
+                console.log(data)
+                decideNext();
+            })
+}
+
 const init = () => {
     decideNext();
 }
+
 init();
 
 
