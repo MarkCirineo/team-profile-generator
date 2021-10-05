@@ -4,6 +4,7 @@ const Employee = require("./lib/employee");
 const Manager = require("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require("./lib/intern");
+const createCard = require("./createhtml");
 
 const decideNextQuestions = [
     {
@@ -25,7 +26,7 @@ const decideNext = () => {
                 } else if (data.option === "Intern"){
                     createIntern();
                 } else {
-                    return;
+                    console.log("Creating index.html")
                 }
             })
 }
@@ -57,7 +58,9 @@ const createManager = () => {
     inquirer
         .prompt(managerQuestions)
             .then((data) => {
-                console.log(data)
+                let name = data.name;
+                name = new Manager(data.name, data.id, data.email, data.officeNumber); 
+                createCard(name);
                 decideNext();
             })
 }
@@ -89,7 +92,9 @@ const createEngineer = () => {
     inquirer
         .prompt(engineerQuestions)
             .then((data) => {
-                console.log(data)
+                let name = data.name;
+                name = new Engineer(data.name, data.id, data.email, data.github); 
+                createCard(name);
                 decideNext();
             })
 }
@@ -121,7 +126,9 @@ const createIntern = () => {
     inquirer
         .prompt(internQuestions)
             .then((data) => {
-                console.log(data)
+                let name = data.name;
+                name = new Intern(data.name, data.id, data.email, data.school); 
+                createCard(name);
                 decideNext();
             })
 }
