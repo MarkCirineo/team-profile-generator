@@ -1,14 +1,16 @@
 // require
 const inquirer = require("inquirer");
-
-// function with prompt for "engineer" or "intern"
+const Employee = require("./lib/employee");
+const Manager = require("./lib/manager");
+const Engineer = require("./lib/engineer");
+const Intern = require("./lib/intern");
 
 const decideNextQuestions = [
     {
         type: "list",
-        message: "'Would you like to create any more employees'",
+        message: "Which type of employee would you live to create?",
         name: "option",
-        choices: ["Yes, create an Engineer", "Yes, create an Intern", "No, I'm finished"]
+        choices: ["Manager", "Engineer", "Intern", "None, I'm finished"]
     }
 ]
 
@@ -16,17 +18,24 @@ const decideNext = () => {
     inquirer
         .prompt(decideNextQuestions)
             .then((data) => {
-                if (data.option === "Yes, create an Engineer") {
-                    console.log(data.option)
-                } else if (data.option === "Yes, create an Intern") {
-                    console.log(data.option)
+                if (data.option === "Manager") {
+                    createManager();
+                } else if (data.option === "Engineer") {
+                    createEngineer();
+                } else if (data.option === "Intern"){
+                    createIntern();
                 } else {
-                    console.log(data.option)
+                    return;
                 }
             })
 }
 
 const managerQuestions = [
+    {
+        type: "input",
+        message: "Enter the employee's name:",
+        name: "name"
+    },
     {
         type: "input",
         message: "Enter the employee's ID:",
@@ -44,7 +53,7 @@ const managerQuestions = [
     },
 ]
 
-const init = () => {
+const createManager = () => {
     inquirer
         .prompt(managerQuestions)
             .then((data) => {
@@ -52,8 +61,11 @@ const init = () => {
                 decideNext();
             })
 }
+
+const init = () => {
+    decideNext();
+}
 init();
-// if statement in the .then which decides which questions to give (another function with a .prompt) based on previous response
 
 
 
