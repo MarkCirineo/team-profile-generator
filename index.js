@@ -11,7 +11,7 @@ const decideNextQuestions = [
         type: "list",
         message: "Which type of employee would you live to create?",
         name: "option",
-        choices: ["Manager", "Engineer", "Intern", "None, I'm finished"]
+        choices: ["Engineer", "Intern", "None, I'm finished"]
     }
 ]
 
@@ -19,9 +19,7 @@ const decideNext = () => {
     inquirer
         .prompt(decideNextQuestions)
             .then((data) => {
-                if (data.option === "Manager") {
-                    createManager();
-                } else if (data.option === "Engineer") {
+                if (data.option === "Engineer") {
                     createEngineer();
                 } else if (data.option === "Intern"){
                     createIntern();
@@ -34,22 +32,22 @@ const decideNext = () => {
 const managerQuestions = [
     {
         type: "input",
-        message: "Enter the employee's name:",
+        message: "Enter the manager's name:",
         name: "name"
     },
     {
         type: "input",
-        message: "Enter the employee's ID:",
+        message: "Enter the manager's ID:",
         name: "id"
     },
     {
         type: "input",
-        message: "Enter the employee's email:",
+        message: "Enter the manager's email:",
         name: "email"
     },
     {
         type: "input",
-        message: "Enter the employee's office number:",
+        message: "Enter the manager's office number:",
         name: "officeNumber"
     },
 ]
@@ -134,7 +132,7 @@ const createIntern = () => {
 }
 
 const init = () => {
-    decideNext();
+    createManager();
 }
 
 init();
