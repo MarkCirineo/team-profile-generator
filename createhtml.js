@@ -2,13 +2,13 @@ const fs = require("fs");
 
 const cardArr = []
 
-const determineJob = (obj) => {
+const determineJobLi = (obj) => {
     if ("officeNumber" in obj) {
-        return obj.officeNumber;
+        return `<li class="list-group-item">${obj.officeNumber}</li>`;
     } else if ("github" in obj) {
-        return obj.github;
+        return `<a href="https://www.github.com/${obj.github}" target="_blank" class="list-group-item">${obj.github}</a>`;
     } else if ("school" in obj) {
-        return obj.school;
+        return `<li class="list-group-item">${obj.school}</li>`;
     } else {
         return;
     }
@@ -19,16 +19,17 @@ const createCard = (employee) => {
     let cardName = employee.name
     cardName = ``;
     const cards = cardArr.map((obj) => {
-        return `<div class="col">
-<div class="card" style="width: 18rem">
-    <div class="card-header">${obj.name}</div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">${obj.id}</li>
-        <li class="list-group-item">${obj.email}</li>
-        <li class="list-group-item">${determineJob(obj)}</li>
-    </ul>
-</div>
-</div>`
+        return `
+        <div class="col">
+            <div class="card" style="width: 18rem">
+                <div class="card-header">${obj.name} | ${obj.getRole()}</div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">${obj.id}</li>
+                    <a class="list-group-item" href="mailto:${obj.email}">${obj.email}</a>
+                    ${determineJobLi(obj)}
+                </ul>
+            </div>
+        </div>`
     })
     createHTML(cards);
 }
