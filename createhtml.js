@@ -4,11 +4,11 @@ const cardArr = []
 
 const determineJobLi = (obj) => {
     if ("officeNumber" in obj) {
-        return `<li class="list-group-item">${obj.officeNumber}</li>`;
+        return `<li class="list-group-item">Office Number: ${obj.officeNumber}</li>`;
     } else if ("github" in obj) {
-        return `<a href="https://www.github.com/${obj.github}" target="_blank" class="list-group-item">${obj.github}</a>`;
+        return `<li class="list-group-item">GitHub: <a href="https://www.github.com/${obj.github}" target="_blank">${obj.github}</a></li>`;
     } else if ("school" in obj) {
-        return `<li class="list-group-item">${obj.school}</li>`;
+        return `<li class="list-group-item">School: ${obj.school}</li>`;
     } else {
         return;
     }
@@ -24,8 +24,8 @@ const createCard = (employee) => {
             <div class="card" style="width: 18rem">
                 <div class="card-header">${obj.name} | ${obj.getRole()}</div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">${obj.id}</li>
-                    <a class="list-group-item" href="mailto:${obj.email}">${obj.email}</a>
+                    <li class="list-group-item">ID: ${obj.id}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${obj.email}">${obj.email}</a></li>
                     ${determineJobLi(obj)}
                 </ul>
             </div>
